@@ -3,23 +3,26 @@ import domain.TextMessage
 import domain.User
 import messengers.EmailMessenger
 import messengers.TextMessenger
+import providers.VerseOfTheDayProvider
 import services.StubVerseOfTheDayService
+import sun.util.calendar.BaseCalendar
+import java.time.LocalDateTime
+import java.util.*
 
 fun main(){
 
     //TODO - switch this out for real service
     val verseOfTheDayService = StubVerseOfTheDayService()
+    val verseOfTheDayProvider = VerseOfTheDayProvider(verseOfTheDayService)
     val messageBuilder = MessageBuilder()
     var textMessage = TextMessage()
     var emailMessage = EmailMessage()
 
-    //TODO - if 5pm (or whatever time I want to send messages)
-    if(true){
+    //TODO - maybe change time?
+    if(LocalDateTime.now().hour == 10 && LocalDateTime.now().minute == 0 && LocalDateTime.now().second == 0){
         try {
-            //TODO - add retry logic for failures
-            var verseOfTheDayResponse = verseOfTheDayService.retrieveVerseOfTheDay()
+            var verseOfTheDayResponse = verseOfTheDayProvider.retrieveVerseOfTheDay(LocalDateTime.now().dayOfYear)
 
-            //TODO - pass in whatever we need to build messages
             textMessage = messageBuilder.buildTextMessage(verseOfTheDayResponse)
             emailMessage = messageBuilder.buildEmailMessage(verseOfTheDayResponse)
 

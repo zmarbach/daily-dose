@@ -1,0 +1,2 @@
+#tells Mockito to allow mocking of final classes (dont have to change code base by modifying classes)
+mock-maker-inline

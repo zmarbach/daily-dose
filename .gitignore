@@ -1,0 +1,30 @@
+# Default ignored files
+/workspace.xml
+
+.gradle
+/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iml
+*.iws
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# build files
+/out/
+/logs/
